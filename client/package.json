@@ -79,7 +79,7 @@
     "vue": "1.0.24",
     "vuex": "0.6.3"
   },
-  "name": "vast2017-mc2",
+  "name": "flightVis",
   "version": "1.0.0",
   "description": "",
   "keywords": [

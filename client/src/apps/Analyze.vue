@@ -102,8 +102,8 @@
 
   export default{
     vuex: {
-      actions: { daySta, minuteSta, trajData, setSCTToken, setChemicalToken, setTimeToken, setCorrelation },
-      getters: {selectedHour, timeLineState}
+      actions: { daySta, minuteSta, trajData },
+      getters: {}
     },
     components: { TimeLine },
     data () {

@@ -19,9 +19,9 @@ export default {
   windowInstall,
   install: (Vue, { directives = {} } = {}) => {
     if (config.debug) {
-      utils.uBanner('SKY EYE')
-      utils.uStrBordered('Welcome To Skyeye FrontEnd Group !!!')
-      utils.uStrBordered('Our Wiki is https://confluence.b.360.cn/pages/viewpage.action?pageId=10092643')
+      // utils.uBanner('Flight Vis')
+      utils.uStrBordered('Welcome To PKUVIS Group !!!')
+      utils.uStrBordered('Our Wiki is http://vis.pku.edu.cn/wiki/')
     }
     // 安装自定义指令
     Vue.use(dCheck, directives.check)
