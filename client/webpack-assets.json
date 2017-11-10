@@ -1,0 +1,8 @@
+{
+  "index": {
+    "js": "/vastchallenge/2017/temp_mc2/static/index.bundle.js"
+  },
+  "index.test": {
+    "js": "/vastchallenge/2017/temp_mc2/static/index.test.bundle.js"
+  }
+}
