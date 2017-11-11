@@ -66,6 +66,15 @@ const mutations = {
   },
   [types.TRAJDATA] (state, trajData) {
     state.trajData = trajData
+  },
+  [types.TIMELINETOPRANGE] (state, timelineTopRange) {
+    state.timelineTopRange = timelineTopRange
+  },
+  [types.CURTIME] (state, curtime) {
+    state.curtime = curtime
+  },
+  [types.SLIDINGWINDOWSIZE] (state, slidingwindowsize) {
+    state.slidingwindowsize = slidingwindowsize
   }
 }
 

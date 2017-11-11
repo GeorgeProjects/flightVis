@@ -89,20 +89,21 @@
 <!--<div id="SkyeyeTooltip"></div>-->
 
 <script>
+  import $ from 'jquery'
   import TimeLine from '../components/TimeLine.vue'
   import sensorData from '../data/sensor.json'
   import storage from '../commons/storage'
 //  import Process from './dataProcess.worker'
   import banner from '../../assets/images/display.jpg'
-  import {daySta, minuteSta, trajData, setSCTToken, setChemicalToken, setTimeToken, setCorrelation} from '../vuex/actions'
-  import {selectedHour, timeLineState} from '../vuex/getters'
+  import { setDaySta, setMinuteSta, setTrajData } from '../vuex/actions'
+  import { } from '../vuex/getters'
   import config from '../commons/config'
 
   let colorMap = config.colorMap
 
   export default{
     vuex: {
-      actions: { daySta, minuteSta, trajData },
+      actions: { setDaySta, setMinuteSta, setTrajData },
       getters: {}
     },
     components: { TimeLine },
@@ -141,6 +142,27 @@
     ready () {
       console.log('[APP]Analyze is ready !!!')
       this.$fLogs.info('[APP]Analyze is ready !!!')
+      let winHeight = $(window).height()
+      let winWidth = $(window).width()
+      console.log('winWidth', winWidth)
+      if (winWidth < 2000) {
+        $('body').css('font-size', '12px')
+      } else if (winWidth < 3000) {
+        $('body').css('font-size', '15px')
+      } else if (winWidth < 4000) {
+        $('body').css('font-size', '25px')
+      } else if (winWidth < 5000) {
+        $('body').css('font-size', '30px')
+      } else if (winWidth < 6000) {
+        $('body').css('font-size', '35px')
+      } else if (winWidth < 7000) {
+        $('body').css('font-size', '40px')
+      } else if (winWidth < 8000) {
+        $('body').css('font-size', '45px')
+      } else if (winWidth < 9000) {
+        $('body').css('font-size', '50px')
+      }
+     // var emPixel = d3.select("#maindiv").style('font-size');
 //      if(loading)  {
 //        //添加加载
 //        $("#loading").removeClass("hidden");
@@ -316,10 +338,10 @@
                 console.log('receive '+ v_id + ': ', data)
                 switch(v_id){
                   case 'monthsta':
-                    self.daySta(data['PEK'])
+                    self.setDaySta(data['PEK'])
                     break
                   case 'daysta':
-                    self.minuteSta(data['PEK'])
+                    self.setMinuteSta(data['PEK'])
                     break
                   case 'curtimedata':
                     let trajData = data['trajData']
@@ -349,10 +371,9 @@
                     })
                     trajData = {'arrTrajs': arrTrajs, 'depTrajs': depTrajs}
                     console.log(trajData)
-                    self.trajData(trajData)
+                    self.setTrajData(trajData)
                     break
                 }
-
                 // data = JSON.parse(data.replace(/\bNaN\b/g, "null"));
                 // console.log('v_id',data)
                 // self.trigger("dataCenter_DataReady", {data: data, id: v_id, task: v_task});
@@ -401,6 +422,9 @@
         background-color: #111;
         color: white;
         overflow: hidden;
+        /*.btn{*/
+            /*font-size:1em;*/
+        /*}*/
         #layoutLeft {
             height: 100%;
             .app-top {

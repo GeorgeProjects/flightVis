@@ -313,41 +313,38 @@ Array.prototype.remove = function(val) {
           function brushOn() {
             // console.log(321321,d3.event.selection)
 
-            extent = d3.event.selection;
+            extent = d3.event.selection
 
             if (extent == null) {
-              handle.attr("display", "none");
+              handle.attr("display", "none")
             } else {
               handle.attr("display", null).attr("transform", function(d, i) { return "translate(" + [ extent[i], - innerHeight] + ")"; });
             }
           }
 
           function brushEnd() {
-            //console.log(d3.event.selection)
+            console.log(d3.event.sourceEvent)
             if (!d3.event.sourceEvent) return; // Only transition after input.
             // if (!d3.event.selection) return; // Ignore empty selections.
             if (d3.event.sourceEvent.type === 'end')
               return
-
-            // console.log(extent)
-            // console.log(extent.map(x.invert))
-
             if(extent[0] == extent[1]){
               if(null_brush_defalut){
-                handle.attr("display", "none");
+                handle.attr("display", "none")
               }
               else{
                 for(let d of dataset){
                   if(extent[0] < x(d.x2) && extent[0] > x(d.x1)){
                     brush_g.transition()
-                      .duration(duration).call(brush.move, [d.x1, d.x2].map(x));
+                      .duration(duration).call(brush.move, [d.x1, d.x2].map(x))
+                    extent = [d.x1, d.x2].map(x)
                     break
                   }
                 }
               }
             }
-            extent = d3.event.selection
-            brush_trigger(extent.map(x.invert))
+            let xExtent = extent.map(x.invert)
+            brush_trigger([xExtent[0].getTime(), xExtent[1].getTime()])
 
             // console.log(d3.event.selection.map(x.invert))
             // g.selectAll('.bar')
@@ -380,7 +377,6 @@ Array.prototype.remove = function(val) {
     }
 
     chart.bar_color = function (value) {
-      console.log('test')
       if (!arguments.length) return bar_color
       if (typeof (value) != 'object') {
         console.warn('invalid value for bar color', value)
@@ -509,7 +505,6 @@ Array.prototype.remove = function(val) {
     }
 
     chart.start_brush_range = function(value) {
-      console.log('start_brush_range', start_brush_range)
       if (!arguments.length) return start_brush_range
       if (typeof(value) != 'object') {
         console.warn('invalid value for start bursh range', value)

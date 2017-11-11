@@ -6,6 +6,8 @@ import frame from 'FRAME'
 import '../../plugins/uikit/css/uikit.min.css'
 import '../../plugins/font-awesome/css/font-awesome.css'
 
+
+
 Vue.use(frame)
 frame.vueInstall({ module: 'v', name: 'config' }, config) // 在Vue实例中通过this.vConfig进行使用
 
